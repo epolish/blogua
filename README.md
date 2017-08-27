@@ -1,5 +1,7 @@
 # blogua
 
+[Link to the project](https://blogua.herokuapp.com)
+
 This project was generated with [Django](https://www.djangoproject.com) version 1.11.3 and [Python](https://www.python.org) version 3.6.1.
 
 ## Additional dependencies
