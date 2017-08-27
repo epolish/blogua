@@ -14,10 +14,15 @@ This project was generated with [Django](https://www.djangoproject.com) version 
 ## Development server
 
 Install django-taggit via pip(under virtualenv).
+
 Run `python manage.py runserver`.
+
 Run `python manage.py migrate`.
+
 (Optional)Run `python manage.py manage.py loaddata fixtures/initial_data.json` for loading seeds.
+
 Navigate to `http://localhost:8000`.
+
 The app will automatically reload if you change any of the source files.
 
 ## Further help
