@@ -1,0 +1,25 @@
+{% extends "blog/base.html" %}
+{% load blog_filter %}
+
+{% block content %}
+<h2>Login</h2>
+  {% if form.errors %}
+    <div class="alert alert-dismissible alert-danger">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <p>Your username and password didn't match. Please try again.</p>
+    </div>
+  {% endif %}
+<hr>
+<form class="form-horizontal" method="post" action="{% url 'login' %}">{% csrf_token %}
+  <p>
+    {{ form.username.label_tag }}
+    {{ form.username|add_css_class:'form-control' }}
+  </p>
+  <p>
+    {{ form.password.label_tag  }}
+    {{ form.password|add_css_class:'form-control' }}
+  </p>
+  <input type="hidden" name="next" value="{{ next }}">
+  <button type="submit" class="save btn btn-primary">Save</button>
+</form>
+{% endblock %}

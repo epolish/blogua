@@ -1,0 +1,41 @@
+{% extends 'blog/base.html' %}
+{% load blog_filter %}
+
+{% block content %}
+  {% if posts %}
+    {% if term %}
+      <h2>found {{ posts_count }} results</h2>
+      <hr>
+    {% endif %}
+    {% for post in posts %}
+      <div class="post">
+        <h2>
+          <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
+          <br>
+          <span class="badge">{{ post.published_date }}</span>
+          <span class="badge">by {{ post.author }}</span>
+        </h2>
+        <p>{{ post.text|linebreaksbr }}</p>
+        <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
+      </div>
+      <hr>
+    {% endfor %}
+    {% with term|prepare_search_param as search_param %}
+      <div class="text-center">
+        <ul class="pagination">
+          <li><a href="?{{ search_param }}page=1">«</a></li>
+          {% for num in posts.paginator.page_range %}
+            {% ifequal num posts.number %}
+              <li class="active"><a href="#">{{ num }}</a></li>
+            {% else %}
+              <li><a href="?{{ search_param }}page={{ num }}"> {{ num }}</a></li>
+            {% endifequal %} 
+          {% endfor %}
+          <li><a href="?{{ search_param }}page={{ posts.paginator.num_pages }}">»</a></li>
+        </ul>
+      </div>
+    {% endwith %}
+  {% else %}
+    <h2>found 0 results</h2>
+  {% endif %}
+{% endblock content %}
