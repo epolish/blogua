@@ -19,7 +19,7 @@ Run `python manage.py runserver`
 
 Run `python manage.py migrate`
 
-(Optional)Run `python manage.py manage.py loaddata fixtures/initial_data.json` for loading seeds.
+(Optional)Run `python manage.py loaddata fixtures/initial_data.json` for loading seeds.
 
 Navigate to `http://localhost:8000`
 
